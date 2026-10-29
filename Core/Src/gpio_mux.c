@@ -1,0 +1,93 @@
+#include "gpio_mux.h"
+#include "macros.h"
+#include "stm32g4xx_hal.h"
+GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+void MUX_SEL_PINS_Conf(){
+
+	/*------------MUX1------------*/
+	 //PC2 (MUX1 SELECT PINA) configuration
+	 GPIO_InitStruct.Pin = MUX1_SEL_PIN_A;
+	 GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	 GPIO_InitStruct.Pull = GPIO_NOPULL;
+	 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	 HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+	 //PC1 (MUX1 SELECT PINB) configuration
+	 GPIO_InitStruct.Pin = MUX1_SEL_PIN_B;
+	 GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	 GPIO_InitStruct.Pull = GPIO_NOPULL;
+	 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	 HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+
+	 //PC0 (MUX1 SELECT PINC) configuration
+	 GPIO_InitStruct.Pin = MUX1_SEL_PIN_C;
+	 GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	 GPIO_InitStruct.Pull = GPIO_NOPULL;
+	 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	 HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+	 /*-----------MUX2--------------*/
+
+	 //PA4 (MUX2 SELECT PINA) configuration
+	 GPIO_InitStruct.Pin = MUX2_SEL_PIN_A;
+	 GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	 GPIO_InitStruct.Pull = GPIO_NOPULL;
+	 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	 HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	 //PA3 (MUX2 SELECT PINB) configuration
+	 GPIO_InitStruct.Pin = MUX2_SEL_PIN_B;
+	 GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	 GPIO_InitStruct.Pull = GPIO_NOPULL;
+	 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	 HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+
+	 //PA2 (MUX2 SELECT PINC) configuration
+	 GPIO_InitStruct.Pin = MUX2_SEL_PIN_C;
+	 GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	 GPIO_InitStruct.Pull = GPIO_NOPULL;
+	 GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	 HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+}
+void Cell1ON(){
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_A,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_B,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_C,GPIO_PIN_RESET);
+
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_A,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_B,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_C,GPIO_PIN_RESET);
+}
+void Cell2ON(){
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_A,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_B,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_C,GPIO_PIN_SET);
+
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_A,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_B,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_C,GPIO_PIN_RESET);
+}
+void Cell3ON(){
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_A,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_B,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_C,GPIO_PIN_RESET);
+
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_A,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_B,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_C,GPIO_PIN_SET);
+
+}
+void Cell4ON(){
+
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_A,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_B,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC,MUX1_SEL_PIN_C,GPIO_PIN_RESET);
+
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_A,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_B,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA,MUX2_SEL_PIN_C,GPIO_PIN_RESET);
+
+}

@@ -1,0 +1,30 @@
+# Build
+Debug/
+Release/
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.su
+*.cyclo
+*.exe
+
+# CubeIDE / Eclipse
+.settings/
+.metadata/
+*.launch
+.mxproject
+.cproject
+.project
+
+# Optional: uncomment if you don't want IDE project files on GitHub
+# .idea/
+# *.ioc
+
+# OS
+.DS_Store
+Thumbs.db
+*~
